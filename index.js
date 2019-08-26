@@ -1,112 +1,38 @@
-// var request = require("request");
-// import "babel-polyfill"
-
 import axios from 'axios'
 
-const request = axios.create({
-  baseURL: "https://api.sendgrid.com/v3/mail/send",
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${process.env.SENDGRID_API_KEY}`,
-    'Access-Control-Allow-Methods': 'POST',
-    'Access-Control-Allow-Origin': '*',
-    "mode": "no-cors"
+const acceptBtn = document.querySelector('.accept')
+const regretBtn = document.querySelector('.regret')
+
+function sendEmail(str) {
+  axios.post('https://api.emailjs.com/api/v1.0/email/send', str)
+}
+
+acceptBtn.addEventListener('click', e => {
+  const toName = document.querySelector('.to_name')
+  const toEmail = document.querySelector('.to_email')
+
+  const data = {
+    user_id: `${process.env.API_KEY}`,
+    template_id: `${process.env.TEMPLATE_ID}`,
+    service_id: `${process.env.SERVICE_ID}`,
+    template_params: {
+      "to_name": `${toName.value}`,
+      "to_email": `${toEmail.value}`,
+      "from_name": "Mary",
+      "from_address": "fort",
+      "from_state": "ny",
+      "from_zip": "10000"
+    }
   }
-});
 
-console.log("?????")
+  if (toName.value && toEmail.value) {
+    sendEmail(data)
+    alert('Thank you for sending RSVP. Check your email.')
+  } else {
+    alert('Please write your name and email')
+  }
+})
 
-const data = {
-  personalizations: [{
-    to: [{
-      email: 'kaite27@gmail.com',
-      name: 'John Doe'
-    }],
-    dynamic_template_data: { 
-      "Sender_Name" : "konfronpi" 
-    },
-    subject: "Hello, World!"
-  }],
-  from: {
-    email: 'beigenut@gmail.com',
-    name: 'kate Doe'
-  },
-  template_id: 'd-0a022d1b51a2483cbe0db333bbdd8ce6'
-}
-
-
-function requestCall(data) {
-  request.post('/', data)
-}
-
-requestCall(data);
-
-// const options = {
-//   method: 'POST',
-//   url: 'https://api.sendgrid.com/v3/mail/send',
-//   headers: { 
-//     'Access-Control-Allow-Methods': 'POST',
-//     'Access-Control-Allow-Origin': '*',
-//     'Access-Control-Allow-Headers': 'Content-Type',
-//     'content-type': 'application/json',
-//     'authorization': `Bearer ${process.env.SENDGRID_API_KEY}`
-//   },
-//   body: {
-//     personalizations: [{
-//       to: [{
-//         email: 'kaite27@gmail.com',
-//         name: 'John Doe'
-//       }],
-//       dynamic_template_data: { 
-//         "Sender_Name" : "konfronpi" 
-//       },
-//       subject: "Hello, World!"
-//     }],
-//     from: {
-//       email: 'beigenut@gmail.com',
-//       name: 'kate Doe'
-//     },
-//     template_id: 'd-0a022d1b51a2483cbe0db333bbdd8ce6'
-//   },
-//   json: true
-// };
-
-// axios(options);
-
-// var options = {
-//   method: 'POST',
-//   url: 'https://api.sendgrid.com/v3/mail/send',
-//   headers: {
-//     'content-type': 'application/json',
-//     'Access-Control-Allow-Origin': '*',
-//     'Access-Control-Allow-Methods': 'POST',
-//     'authorization': `Bearer $,
-//     {process.env.SENDGRID_API_KEY}`
-//   },
-//   body: {
-//     personalizations: [{
-//       to: [{
-//         email: 'kaite27@gmail.com',
-//         name: 'John Doe'
-//       }],
-//       dynamic_template_data: { 
-//         "Sender_Name" : "konfronpi" 
-//       },
-//       subject: "Hello, World!"
-//     }],
-//     from: {
-//       email: 'beigenut@gmail.com',
-//       name: 'kate Doe'
-//     },
-//     template_id: 'd-0a022d1b51a2483cbe0db333bbdd8ce6'
-//   },
-//   json: true
-// };
-
-// // request(options, function (error, response, body) {
-// //   if (error) throw new Error(error);
-
-// //   console.log(body);
-// // });
-
-// request(options)
+regretBtn.addEventListener('click', e => {
+  alert("Really?!")
+})
