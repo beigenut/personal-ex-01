@@ -1837,106 +1837,40 @@ var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// var request = require("request");
-// import "babel-polyfill"
-var request = _axios.default.create({
-  baseURL: "https://api.sendgrid.com/v3/mail/send",
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': "Bearer ".concat("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"),
-    'Access-Control-Allow-Methods': 'POST',
-    'Access-Control-Allow-Origin': '*',
-    "mode": "no-cors"
-  }
-});
+var acceptBtn = document.querySelector('.accept');
+var regretBtn = document.querySelector('.regret');
 
-console.log("?????");
-var data = {
-  personalizations: [{
-    to: [{
-      email: 'kaite27@gmail.com',
-      name: 'John Doe'
-    }],
-    dynamic_template_data: {
-      "Sender_Name": "konfronpi"
-    },
-    subject: "Hello, World!"
-  }],
-  from: {
-    email: 'beigenut@gmail.com',
-    name: 'kate Doe'
-  },
-  template_id: 'd-0a022d1b51a2483cbe0db333bbdd8ce6'
-};
-
-function requestCall(data) {
-  request.post('/', data);
+function sendEmail(str) {
+  _axios.default.post('https://api.emailjs.com/api/v1.0/email/send', str);
 }
 
-requestCall(data); // const options = {
-//   method: 'POST',
-//   url: 'https://api.sendgrid.com/v3/mail/send',
-//   headers: { 
-//     'Access-Control-Allow-Methods': 'POST',
-//     'Access-Control-Allow-Origin': '*',
-//     'Access-Control-Allow-Headers': 'Content-Type',
-//     'content-type': 'application/json',
-//     'authorization': `Bearer ${process.env.SENDGRID_API_KEY}`
-//   },
-//   body: {
-//     personalizations: [{
-//       to: [{
-//         email: 'kaite27@gmail.com',
-//         name: 'John Doe'
-//       }],
-//       dynamic_template_data: { 
-//         "Sender_Name" : "konfronpi" 
-//       },
-//       subject: "Hello, World!"
-//     }],
-//     from: {
-//       email: 'beigenut@gmail.com',
-//       name: 'kate Doe'
-//     },
-//     template_id: 'd-0a022d1b51a2483cbe0db333bbdd8ce6'
-//   },
-//   json: true
-// };
-// axios(options);
-// var options = {
-//   method: 'POST',
-//   url: 'https://api.sendgrid.com/v3/mail/send',
-//   headers: {
-//     'content-type': 'application/json',
-//     'Access-Control-Allow-Origin': '*',
-//     'Access-Control-Allow-Methods': 'POST',
-//     'authorization': `Bearer $,
-//     {process.env.SENDGRID_API_KEY}`
-//   },
-//   body: {
-//     personalizations: [{
-//       to: [{
-//         email: 'kaite27@gmail.com',
-//         name: 'John Doe'
-//       }],
-//       dynamic_template_data: { 
-//         "Sender_Name" : "konfronpi" 
-//       },
-//       subject: "Hello, World!"
-//     }],
-//     from: {
-//       email: 'beigenut@gmail.com',
-//       name: 'kate Doe'
-//     },
-//     template_id: 'd-0a022d1b51a2483cbe0db333bbdd8ce6'
-//   },
-//   json: true
-// };
-// // request(options, function (error, response, body) {
-// //   if (error) throw new Error(error);
-// //   console.log(body);
-// // });
-// request(options)
+acceptBtn.addEventListener('click', function (e) {
+  var toName = document.querySelector('.to_name');
+  var toEmail = document.querySelector('.to_email');
+  var data = {
+    user_id: "".concat("user_qJQMMegEyAwguXMqai6xm"),
+    template_id: "".concat("template_OC4PPcCi"),
+    service_id: "".concat("sendgrid"),
+    template_params: {
+      "to_name": "".concat(toName.value),
+      "to_email": "".concat(toEmail.value),
+      "from_name": "Mary",
+      "from_address": "fort",
+      "from_state": "ny",
+      "from_zip": "10000"
+    }
+  };
+
+  if (toName.value && toEmail.value) {
+    sendEmail(data);
+    alert('Thank you for sending RSVP. Check your email.');
+  } else {
+    alert('Please write your name and email');
+  }
+});
+regretBtn.addEventListener('click', function (e) {
+  alert("Really?!");
+});
 },{"axios":"node_modules/axios/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -1965,7 +1899,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57911" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51565" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

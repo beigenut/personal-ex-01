@@ -1,0 +1,120 @@
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: url("https://image.freepik.com/free-photo/close-up-hand-groom-puts-wedding-ring-brides-finger-ceremony-street-selective-focus_94863-503.jpg") no-repeat;
+  background-size: cover;
+  font-family: 'Raleway';
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  top: 200px;
+  left: 0;
+}
+
+.top {
+  background-color: #e71364;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 200px;
+  width: 100%;
+  box-shadow: 2px 2px 4px rgb(0, 0, 0, .25);
+}
+
+.form {
+  height: 600px;
+  width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  color: #666;
+  padding: 0px 0px;
+  box-shadow: 7px 10px 6px rgb(0, 0, 0, .25);
+  z-index: 10;
+}
+
+.info {
+  padding: 10px;
+}
+
+h1,
+h2,
+p {
+  text-align: center;
+  padding: 0px;
+  margin: 5px 5px;
+}
+
+h2 {
+  font-family: 'Great Vibes', cursive;
+  font-weight: 100;
+}
+
+p.line {
+  margin: 0px auto 20px auto;
+  color: #999;
+}
+
+.form input {
+  font-size: 15px;
+  color: #666;
+  padding: 6px;
+  margin: 25px auto 20px;
+  display: block;
+  width: 75%;
+}
+
+input:focus {
+  outline: 0;
+}
+
+.button button {
+  display: inline-block;
+  width: 400px;
+}
+
+button {
+  color: rgb(255, 255, 255);
+  background-color: #ec4b63;
+  border: none;
+  font-family: 'Raleway';
+  font-size: 18px;
+  font-weight: 600;
+  padding: 15px 32px;
+  width: 200px;
+  margin: 20px auto 0px auto;
+  float: left;
+}
+
+button.accept {
+  border-radius: 0px 0px 0px 10px;
+  border-right: solid 1px #cc919a;
+}
+
+button.regret {
+  border-radius: 0px 0px 10px 0px;
+}
+
+button:hover {
+  background-color: #c91d37;
+  transition: .5s;
+}
+
+button:focus {
+  outline: 0;
+}
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */
